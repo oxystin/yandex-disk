@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  yandex-disk:
+    build: .
+    container_name: yandex-disk
+    restart: unless-stopped
+    volumes:
+      - ./yandex-config:/root/.config/yandex-disk
+      - ./backup:/ydisk
+    command: bash -c "yandex-disk start --no-daemon --dir=/ydisk"
